@@ -9,6 +9,7 @@ from reshape import Reshape
 from losses import binary_cross_entropy,binary_cross_entropy_prime
 from network import train,predict
 
+
 def preprocess_data(x,y,limit):
     zero_index=np.where(y==0)[0][:limit]
     one_index=np.where(y==1)[0][:limit]
