@@ -15,6 +15,7 @@ def preprocess_data(x,y,limit):
     one_index=np.where(y==1)[0][:limit]
     all_index=np.hstack((zero_index,one_index))
     all_index=np.random.permutation(all_index)
+    x,y=x[all_index],y[all_index]
     x=x.reshape(len(x),1,28,28)
     x=x.astype("float32")/255
     y=np_utils.to_categorical(y)
@@ -26,7 +27,7 @@ x_train, y_train = preprocess_data(x_train, y_train, 100)
 x_test, y_test = preprocess_data(x_test, y_test, 100)
 
 network=[
-    Convolutional((1,28,28),5,5),
+    Convolutional((1,28,28),3,5),
     Sigmoid(),
     Reshape((5,26,26),(5*26*26,1)),
     Dense(5*26*26,100),

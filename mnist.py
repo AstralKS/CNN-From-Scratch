@@ -3,7 +3,7 @@ from keras.datasets import mnist
 from keras.utils import np_utils
 
 from dense import Dense
-from activation import Tanh
+from activations import Tanh
 from losses import mse,mse_prime
 from network import train,predict
 

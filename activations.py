@@ -1,7 +1,7 @@
 import numpy as np
 
 from layer import Layer
-from activations import Activation
+from activation import Activation
 
 class Tanh(Activation):
     def __init__(self):

@@ -5,6 +5,7 @@ def predict(network,input):
     return output
 
 def train(network,loss,loss_prime,x_train,y_train,epochs=100,learning_rate=0.01,verbose=True):
+    loss_history=[]
     for e in range(epochs):
         error=0
         for x,y in zip(x_train,y_train):
@@ -13,7 +14,8 @@ def train(network,loss,loss_prime,x_train,y_train,epochs=100,learning_rate=0.01,
             grad=loss_prime(y,output)
             for layer in reversed(network):
                 grad=layer.backward(grad,learning_rate)
-            
-            error/=len(x_train)
-            if verbose:
-                print(f"{e+1}/{epochs},error={error}")
+        error/=len(x_train)
+        loss_history.append(error)
+        if verbose:
+            print(f"{e+1}/{epochs},error={error}")
+    return loss_history
